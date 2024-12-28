@@ -6,7 +6,6 @@ export const config = {
   matcher: [
     "/api/auth",
     "/api/users/delete",
-    "/api/users/fetch",
     "/api/users/updateProfile",
     "/api/gameList/addGame",
     "/api/gameList/deleteGame/:gameId*",
@@ -22,7 +21,7 @@ export const corsHeaders = {
 };
 
 export default async function middleware(req) {
-  if (req.method === "OPTIONS") {
+    if (req.method === "OPTIONS") {
     return NextResponse.json({}, { headers: corsHeaders });
   }
 
