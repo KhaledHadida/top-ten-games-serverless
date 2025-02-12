@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import dbConnect from "@lib/dbConnect";
 import User from "@models/User";
 import TopTen from "@models/TopTen";
+import GamesCompleted from "@/models/GamesCompleted";
+import FutureGames from "@/models/FutureGames";
 import bcrypt from "bcryptjs";
 import ajv from "@lib/customAjvKeyword";
 import registerSchema from "@schemas/register";
@@ -50,7 +52,25 @@ export const POST = async (req) => {
       topGames: [],
     };
 
+    //Create empty completed games list for the user as well
+    const completedGames = {
+      user: user.id,
+      games: [],
+    }
+
+    //Create empty completed games list for the user as well
+    const futureGames = {
+      user: user.id,
+      games: [],
+    }
+
     const newTopTen = new TopTen(topTen);
+    //New added the completed game list whenever a new account is registered.
+    const newCompletedGames = new GamesCompleted(completedGames);
+    const newFutureGames = new FutureGames(futureGames);
+
+    await newFutureGames.save();
+    await newCompletedGames.save();
     await newTopTen.save();
 
     return NextResponse.json({ success: true }, { status: 200 });

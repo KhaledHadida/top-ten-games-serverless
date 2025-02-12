@@ -8,9 +8,17 @@ export const config = {
     "/api/users/delete",
     "/api/users/updateProfile",
     "/api/gameList/addGame",
+    "/api/gamesCompleted/addGame",
+    "/api/futureGames/addGame",
     "/api/gameList/deleteGame/:gameId*",
+    "/api/gamesCompleted/deleteGame/:gameId*",
+    "/api/futureGames/deleteGame/:gameId*",
     "/api/gameList/getGameList",
+    "/api/gamesCompleted/getGameList",
+    "/api/futureGames/getGameList",
     "/api/gameList/updateGame/:gameId*",
+    "/api/gamesCompleted/updateGame/:gameId*",
+
   ],
 };
 
